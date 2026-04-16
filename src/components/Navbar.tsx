@@ -27,11 +27,16 @@ const Navbar = () => {
     links.forEach((elem) => {
       let element = elem as HTMLAnchorElement;
       element.addEventListener("click", (e) => {
+        e.preventDefault();
+        let elem = e.currentTarget as HTMLAnchorElement;
+        let section = elem.getAttribute("data-href");
         if (window.innerWidth > 1024) {
-          e.preventDefault();
-          let elem = e.currentTarget as HTMLAnchorElement;
-          let section = elem.getAttribute("data-href");
           smoother.scrollTo(section, true, "top top");
+        } else if (section) {
+          const target = document.querySelector(section);
+          if (target) {
+            target.scrollIntoView({ behavior: "smooth" });
+          }
         }
       });
     });
@@ -42,15 +47,13 @@ const Navbar = () => {
   return (
     <>
       <div className="header">
-        <a href="/#" className="navbar-title" data-cursor="disable">
-          Logo
-        </a>
+
         <a
-          href="mailto:example@mail.com"
+          href="mailto:shahjwelin44@gmail.com"
           className="navbar-connect"
           data-cursor="disable"
         >
-          example@mail.com
+          shahjwelin44@gmail.com
         </a>
         <ul>
           <li>
