@@ -30,6 +30,7 @@ const Navbar = () => {
         e.preventDefault();
         let elem = e.currentTarget as HTMLAnchorElement;
         let section = elem.getAttribute("data-href");
+        if (!section) return;
         if (window.innerWidth > 1024) {
           smoother.scrollTo(section, true, "top top");
         } else if (section) {
